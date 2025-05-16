@@ -16,10 +16,8 @@ A zero‑runtime icon library that ships **plain SVG files** from the official H
 npm i heroicons-html-cdn
 # or
 yarn add heroicons-html-cdn
-
-
-Raw **Heroicons** SVG files (24×24) organised by style (solid / outline). Perfect for Astro or plain HTML projects that want zero‑JS, inline‑SVG control.
-
+```
+ 
 ```astro
 ---
 import fs from 'fs';
