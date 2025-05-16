@@ -1,25 +1,30 @@
 {
   "name": "heroicons-html-cdn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MIT‑licensed Heroicons as raw SVGs for HTML/Astro.",
-  "keywords": ["heroicons", "svg", "astro", "cdn", "icons"],
+  "keywords": [
+    "heroicons",
+    "svg",
+    "astro",
+    "cdn",
+    "icons"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/SarafoglouAth/heroicons-html-cdn.git"
   },
-   
   "files": [
-  "solid/",
-  "outline/",
-  "index.js",
-  "index.d.ts",
-  "icons.json",
-  "icon-types.d.ts",
-  "LICENSE"
-],
+    "solid/",
+    "outline/",
+    "index.js",
+    "index.d.ts",
+    "icons.json",
+    "icon-types.d.ts",
+    "LICENSE"
+  ],
   "main": "index.js",
-   "types": "index.d.ts",
+  "types": "index.d.ts",
   "bin": {
     "heroicons-fetch": "bin/fetch-heroicons.js"
   },
