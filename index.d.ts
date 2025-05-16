@@ -1,7 +1,7 @@
-// index.d.ts
-
 declare module 'heroicons-html-cdn' {
   import type { SolidIconName, OutlineIconName } from './icon-types';
+
+  export type { SolidIconName, OutlineIconName };  
 
   /**
    * Returns the raw SVG string for a given icon.
