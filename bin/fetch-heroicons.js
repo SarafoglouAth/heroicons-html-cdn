@@ -3,14 +3,19 @@
 // Fetches the latest Heroicons release tarball and copies optimised 24 px
 // solid / outline SVGs into this package’s folders, then auto-generates the
 // TypeScript union types.
-//
-// Uses only Node core + fs-extra. No global git required.
 
-const https = require('https');
-const path = require('path');
-const fs = require('fs-extra');
-const { execSync } = require('child_process');
-const os = require('os');
+import https from 'https';
+import path from 'path';
+import fs from 'fs-extra';
+import { execSync } from 'child_process';
+import os from 'os';
+import { fileURLToPath } from 'url';
+
+// ──────────────────────────────────────────────
+// resolve __dirname in ESM
+// ──────────────────────────────────────────────
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // ──────────────────────────────────────────────
 // settings
@@ -95,7 +100,16 @@ export type OutlineIconName = ${toUnion(outlineIcons)};
     content,
     'utf8'
   );
+  const iconList = {
+  solid: solidIcons,
+  outline: outlineIcons
+};
 
+await fs.writeJson(
+  path.join(PACKAGE_DIR, 'icons.json'),
+  iconList,
+  { spaces: 2 }
+);
   console.log('  • icon-types.d.ts generated');
 }
 

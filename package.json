@@ -23,7 +23,8 @@
     "index.d.ts",
     "icons.json",
     "icon-types.d.ts",
-    "LICENSE"
+    "LICENSE",
+    "bin/fetch-heroicons.js"
   ],
   "main": "index.js",
   "types": "index.d.ts",
