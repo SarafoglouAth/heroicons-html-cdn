@@ -17,6 +17,7 @@
   "files": [
     "solid/",
     "outline/",
+     "getIcon.server.js",
     "index.js",
     "index.d.ts",
     "icons.json",
