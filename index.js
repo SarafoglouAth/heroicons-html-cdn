@@ -1,9 +1,9 @@
-// index.js (CommonJS-safe wrapper)
-let mod;
-function load() {
-  if (!mod) mod = require('./getIcon.server.js');
-  return mod;
-}
+// index.js — ESM entrypoint that wraps the CJS server logic
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
-exports.getIcon = (...args) => load().getIcon(...args);
-exports.getIconList = () => load().getIconList();
+// load the server‐only implementation
+const mod = require('./getIcon.server.js');
+
+export const getIcon     = (style, name) => mod.getIcon(style, name);
+export const getIconList = () => mod.getIconList();
