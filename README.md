@@ -23,4 +23,8 @@ yarn add heroicons-html-cdn
 import fs from 'fs';
 const svg = fs.readFileSync('node_modules/heroicons-html-cdn/solid/home.svg', 'utf-8');
 ---
+<!-- Astro: innerHTML approach -->
 <div class="w-6 h-6 text-blue-600" innerHTML={svg} />
+
+<!-- Alternative syntax using set:html directive -->
+<div class="h-6 w-6 text-white" set:html={svg} />

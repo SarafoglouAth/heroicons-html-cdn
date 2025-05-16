@@ -8,13 +8,18 @@
     "type": "git",
     "url": "https://github.com/SarafoglouAth/heroicons-html-cdn.git"
   },
+   
   "files": [
-    "solid/",
-    "outline/",
-    "index.js",
-    "LICENSE"
-  ],
+  "solid/",
+  "outline/",
+  "index.js",
+  "index.d.ts",
+  "icons.json",
+  "icon-types.d.ts",
+  "LICENSE"
+],
   "main": "index.js",
+   "types": "index.d.ts",
   "bin": {
     "heroicons-fetch": "bin/fetch-heroicons.js"
   },
