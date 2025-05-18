@@ -3,7 +3,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 // load the server‐only implementation
-const mod = require('./getIcon.server.cjs');
+const mod = require('./getIcon.server.js');
 
 export const getIcon     = (style, name) => mod.getIcon(style, name);
 export const getIconList = () => mod.getIconList();
