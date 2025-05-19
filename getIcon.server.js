@@ -1,9 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import icons from './icons.json' assert { type: "json" };
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// Conditional import to avoid browser issues
+let __dirname;
+if (typeof window === 'undefined') {
+  __dirname = path.dirname(fileURLToPath(import.meta.url));
+} else {
+  __dirname = './'; // Or a suitable fallback for browser context (unlikely to be used)
+}
+
+import icons from './icons.json' assert { type: "json" };
 
 export function getIcon(style, name) {
   const p = path.join(__dirname, style, `${name}.svg`);

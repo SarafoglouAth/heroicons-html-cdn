@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Fetches the latest Heroicons release tarball and copies optimised 24 px
+// Fetches the latest Heroicons release tarball and copies optimized 24 px
 // solid / outline SVGs into this package’s folders, then auto-generates the
 // TypeScript union types.
 
@@ -20,27 +20,27 @@ const __dirname = path.dirname(__filename);
 // ──────────────────────────────────────────────
 // settings
 // ──────────────────────────────────────────────
-const VERSION      = 'v2.1.5';
-const TAR_URL      = `https://codeload.github.com/tailwindlabs/heroicons/tar.gz/refs/tags/${VERSION}`;
-const TMP_DIR      = path.join(os.tmpdir(), `heroicons_${Date.now()}`);
-const PACKAGE_DIR  = path.resolve(__dirname, '..');
+const VERSION      = 'v2.1.5';
+const TAR_URL      = `https://codeload.github.com/tailwindlabs/heroicons/tar.gz/refs/tags/${VERSION}`;
+const TMP_DIR      = path.join(os.tmpdir(), `heroicons_${Date.now()}`);
+const PACKAGE_DIR  = path.resolve(__dirname, '..');
 
 // ──────────────────────────────────────────────
 // main
 // ──────────────────────────────────────────────
-async function run () {
+async function run() {
   console.log(`[heroicons-html-cdn] Downloading Heroicons ${VERSION} …`);
   await downloadAndExtract();
 
   console.log('Copying SVGs …');
-  const solidSrc   = path.join(TMP_DIR, `heroicons-${VERSION.slice(1)}`, 'optimized', '24', 'solid');
+  const solidSrc   = path.join(TMP_DIR, `heroicons-${VERSION.slice(1)}`, 'optimized', '24', 'solid');
   const outlineSrc = path.join(TMP_DIR, `heroicons-${VERSION.slice(1)}`, 'optimized', '24', 'outline');
-  const solidDest   = path.join(PACKAGE_DIR, 'solid');
+  const solidDest   = path.join(PACKAGE_DIR, 'solid');
   const outlineDest = path.join(PACKAGE_DIR, 'outline');
 
-  await fs.emptyDir(solidDest);
-  await fs.emptyDir(outlineDest);
-  await fs.copy(solidSrc,   solidDest);
+  await fs.ensureDir(solidDest); // Use ensureDir (singular)
+  await fs.ensureDir(outlineDest); // Use ensureDir (singular)
+  await fs.copy(solidSrc,   solidDest);
   await fs.copy(outlineSrc, outlineDest);
 
   // ─ generate d.ts with union types
@@ -55,7 +55,7 @@ async function run () {
 // ──────────────────────────────────────────────
 // helpers
 // ──────────────────────────────────────────────
-function downloadAndExtract () {
+function downloadAndExtract() {
   return new Promise((resolve, reject) => {
     const tarPath = path.join(TMP_DIR, 'heroicons.tar.gz');
     fs.ensureDirSync(TMP_DIR);
@@ -78,7 +78,7 @@ function downloadAndExtract () {
   });
 }
 
-async function createIconTypes (solidDest, outlineDest) {
+async function createIconTypes(solidDest, outlineDest) {
   const toUnion = arr => arr.map(n => `"${n}"`).join(' | ');
 
   const solidIcons = (await fs.readdir(solidDest))
@@ -91,7 +91,7 @@ async function createIconTypes (solidDest, outlineDest) {
 
   const content =
 `// AUTO-GENERATED – DO NOT EDIT
-export type SolidIconName   = ${toUnion(solidIcons)};
+export type SolidIconName   = ${toUnion(solidIcons)};
 export type OutlineIconName = ${toUnion(outlineIcons)};
 `;
 
@@ -101,16 +101,16 @@ export type OutlineIconName = ${toUnion(outlineIcons)};
     'utf8'
   );
   const iconList = {
-  solid: solidIcons,
-  outline: outlineIcons
-};
+    solid: solidIcons,
+    outline: outlineIcons
+  };
 
-await fs.writeJson(
-  path.join(PACKAGE_DIR, 'icons.json'),
-  iconList,
-  { spaces: 2 }
-);
-  console.log('  • icon-types.d.ts generated');
+  await fs.writeJson(
+    path.join(PACKAGE_DIR, 'icons.json'),
+    iconList,
+    { spaces: 2 }
+  );
+  console.log('  • icon-types.d.ts generated');
 }
 
 // ──────────────────────────────────────────────

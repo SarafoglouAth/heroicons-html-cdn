@@ -33,20 +33,18 @@
       "import": "./index.js",
       "require": "./index.js"
     },
-    "./getIcon.server.js": "./getIcon.server.js",
-    "./icons.json": "./icons.json"
+    "./getIcon.server.js": "./getIcon.server.js"
   },
   "types": "index.d.ts",
   "bin": {
     "heroicons-fetch": "bin/fetch-heroicons.js"
   },
   "scripts": {
-    "fetch-icons": "node fetch-heroicons.js"
+    "fetch-icons": "node bin/fetch-heroicons.js",
+    "prepare": "node bin/fetch-heroicons.js"  
   },
   "dependencies": {
-    "fs-extra": "^11.2.0",
-    "heroicons-html-cdn": "^1.0.11",
-    "path": "^0.12.7"
+    "fs-extra": "^11.2.0"
   },
   "engines": {
     "node": ">=16"
