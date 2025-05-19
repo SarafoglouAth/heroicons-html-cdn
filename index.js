@@ -1,9 +1,12 @@
-// index.js — ESM entrypoint that wraps the CJS server logic
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
+// index.js
+const getIconModule = import('./getIcon.server.js');
 
-// load the server‐only implementation
-const mod = require('./getIcon.server.js');
+export const getIcon = async (style, name) => {
+  const { getIcon } = await getIconModule;
+  return getIcon(style, name);
+};
 
-export const getIcon     = (style, name) => mod.getIcon(style, name);
-export const getIconList = () => mod.getIconList();
+export const getIconList = async () => {
+  const { getIconList } = await getIconModule;
+  return getIconList();
+};
