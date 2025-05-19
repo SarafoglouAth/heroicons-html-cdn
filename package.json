@@ -1,7 +1,7 @@
 {
   "name": "heroicons-html-cdn",
   "type": "module",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "MIT‑licensed Heroicons as raw SVGs for HTML/Astro.",
   "keywords": [
     "heroicons",
@@ -41,7 +41,7 @@
   },
   "scripts": {
     "fetch-icons": "node bin/fetch-heroicons.js",
-    "prepare": "node bin/fetch-heroicons.js"  
+    "prepare": "node bin/fetch-heroicons.js"
   },
   "dependencies": {
     "fs-extra": "^11.2.0"
