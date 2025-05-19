@@ -33,7 +33,8 @@
       "import": "./index.js",
       "require": "./index.js"
     },
-    "./getIcon.server.js": "./getIcon.server.js"
+    "./getIcon.server.js": "./getIcon.server.js",
+      "./icons.json": "./icons.json" 
   },
   "types": "index.d.ts",
   "bin": {
