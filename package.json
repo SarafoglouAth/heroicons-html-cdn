@@ -1,7 +1,7 @@
 {
   "name": "heroicons-html-cdn",
   "type": "module",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "MIT‑licensed Heroicons as raw SVGs for HTML/Astro.",
   "keywords": [
     "heroicons",
