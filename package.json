@@ -1,7 +1,7 @@
 {
   "name": "heroicons-html-cdn",
   "type": "module",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "MIT‑licensed Heroicons as raw SVGs for HTML/Astro.",
   "keywords": [
     "heroicons",
@@ -34,7 +34,7 @@
       "require": "./index.js"
     },
     "./getIcon.server.js": "./getIcon.server.js",
-      "./icons.json": "./icons.json" 
+    "./icons.json": "./icons.json"
   },
   "types": "index.d.ts",
   "bin": {
